@@ -20,7 +20,7 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id  # 自己点的 start
     steps:
     - name: Checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@main
     - name: Set up Python #安装python
       uses: actions/setup-python@v1
       with:
@@ -57,6 +57,6 @@ jobs:
       run: |
         git pull
     - name: Push changes
-      uses: ad-m/github-push-action@master
+      uses: ad-m/github-push-action@main
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
