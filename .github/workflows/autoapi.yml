@@ -20,7 +20,10 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id  # 自己点的 start
     steps:
     - name: Checkout
-      uses: actions/checkout@main
+      uses: actions/checkout@master
+    - name: Pull
+      run: |
+        git pull
     - name: Set up Python #安装python
       uses: actions/setup-python@v1
       with:
@@ -53,10 +56,7 @@ jobs:
         git config --global user.name AutoupdateRobot
         git add .
         git commit -m "update new refresh_token" -a
-    - name: Pull
-      run: |
-        git pull
     - name: Push changes
-      uses: ad-m/github-push-action@main
+      uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
